@@ -93,6 +93,346 @@ html {
 }
 
 
+/* 섹션 전체 레이아웃 */
+.player-detail-section {
+  /* 상단 프로필 섹션 (여백 조정) */
+  width: 100%;
+  padding-top: 150px;
+  padding-bottom: 0;
+  /* 아래 섹션과 붙이기 위해 0으로 변경 */
+  display: flex;
+  justify-content: center;
+}
+
+/* 반투명 박스 (PLAYERS 타이틀 컨셉) */
+.glass-container {
+  width: calc(100% - 100px);
+  max-width: 1400px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 50px;
+  position: relative;
+  /* 아래 섹션과 붙을 때 어색하지 않도록 하단 모서리 반경을 0으로 설정 */
+  border-radius: 4px 4px 0 0;
+  box-sizing: border-box;
+  /* 패딩이 너비에 영향을 주지 않도록 추가 */
+}
+
+/* 좌상단 ㄱ자 포인트 */
+.corner-point {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-top: 4px solid #b79a5c;
+  /* 골드 포인트 */
+  border-left: 4px solid #b79a5c;
+}
+
+/* 내부 레이아웃 */
+.profile-layout {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* 사진 사이즈 조정 */
+.profile-photo-box {
+  width: 150px;
+  height: 150px;
+  flex: 0 0 150px;
+  /* 너비를 150px로 고정하고 변하지 않게 함 */
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #b79a5c;
+}
+
+.profile-info-box {
+  flex: 1 1 auto;
+  /* 유동적으로 공간 점유 */
+  padding: 0 20px;
+  min-width: 0;
+  /* 중요: 내부 컨텐츠가 넘쳐도 부모를 터트리지 않음 */
+}
+
+.profile-photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 이름 & 등번호 */
+.name-tag {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.back-number {
+  background: #b79a5c;
+  color: #fff;
+  padding: 2px 10px;
+  font-weight: 900;
+  font-size: 18px;
+  border-radius: 2px;
+}
+
+.main-name {
+  font-size: 46px;
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+}
+
+/* 정보 그리드 (2줄 배치) */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* 2열 배치 */
+  gap: 15px 40px;
+}
+
+.stat-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 800;
+}
+
+.stat-value {
+  font-size: 22px;
+  color: #eee;
+  font-weight: 600;
+}
+
+/* 포지션 맵 컨테이너 */
+/* 포지션 맵 전체 영역 크기 키움 */
+.position-map-area {
+  flex: 0 0 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.full-pitch {
+  position: relative;
+  width: 140px;
+  height: 200px;
+  /* 세로로 긴 전체 구장 */
+  background: rgba(183, 154, 92, 0.03);
+  /* 연한 골드빛 잔디 */
+  border: 1px solid rgba(183, 154, 92, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.full-pitch div:not(.pos-dot) {
+  position: absolute;
+  border: 1px solid rgba(183, 154, 92, 0.2);
+}
+
+/* 중앙선 및 중앙 원 */
+.center-line {
+  width: 100%;
+  top: 50%;
+  left: 0;
+  border-bottom: 1px solid rgba(183, 154, 92, 0.2) !important;
+}
+
+.center-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 페널티 박스 (위 - 공격진) */
+.penalty-area-top {
+  width: 70px;
+  height: 30px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: none !important;
+}
+
+/* 페널티 박스 (아래 - 수비진) */
+.penalty-area-bottom {
+  width: 70px;
+  height: 30px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom: none !important;
+}
+
+/* [중요] 공격수(ST) 점 위치 */
+.pos-dot.st.active {
+  position: absolute;
+  top: 15px;
+  /* 위쪽 페널티 박스 근처 (공격수) */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #b79a5c;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #b79a5c;
+  z-index: 5;
+}
+
+
+
+
+
+/* 하단 퍼포먼스 섹션 수정 */
+.performance-section {
+  width: calc(100% - 100px);
+  max-width: 1400px;
+  /* [핵심] 상단 마진을 0으로 변경, 좌우는 auto로 중앙 정렬 */
+  margin: 0 auto 100px;
+  background: #222;
+  /* 상단 모서리 반경을 0으로 하여 위 박스와 밀착 */
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+
+.profile-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* 양 끝으로 벌려 빈 공간 활용 */
+  gap: 40px;
+}
+
+/* 상단 헤더 */
+.perf-header {
+  padding: 15px 25px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.perf-title {
+  color: #eee;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.perf-subtitle {
+  color: #eee;
+  font-size: 13px;
+}
+
+/* 본문 영역 */
+.perf-body {
+  display: flex;
+  min-height: 250px;
+}
+
+/* 좌측 파란색 아이콘 박스 */
+.perf-side-icon {
+  width: 120px;
+  background: #b79a5c;
+  /* 진한 네이비 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.perf-side-icon img {
+  width: 50px;
+  margin-bottom: 15px;
+  filter: brightness(0) invert(1);
+}
+
+.perf-side-icon span {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
+/* 중앙 통계 영역 */
+.perf-stats {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f5f5f5;
+  padding: 10px 0;
+}
+
+.stat-item {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #eee;
+}
+
+.stat-item .value {
+  font-weight: 800;
+}
+
+.blue-text {
+  color: #eee;
+}
+
+/* 하단 차트 영역 */
+.perf-charts {
+  display: flex;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.chart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #eee;
+  font-weight: 600;
+}
+
+.circle-chart {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #b79a5c;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+
 
 .footer {
   width: 100%;

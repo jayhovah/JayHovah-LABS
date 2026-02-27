@@ -187,6 +187,16 @@
   z-index: 1;
 }
 
+.player-card-link {
+  text-decoration: none;
+  /* 밑줄 제거 */
+  color: inherit;
+  /* 부모의 글자색 상속 */
+  display: block;
+  /* 영역 전체가 클릭 가능하도록 */
+  transition: transform 0.3s ease;
+}
+
 .card-bg {
   position: absolute;
   bottom: 0;
@@ -229,6 +239,13 @@
   width: auto;
   object-fit: contain;
   transition: all 0.4s ease;
+}
+
+/* 링크에 호버 효과를 주면 더 생동감이 생깁니다 */
+.player-card-link:hover .player-card {
+  transform: translateY(-10px);
+  /* 살짝 위로 올라가는 효과 */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
 .player-card:hover .player-photo img {
