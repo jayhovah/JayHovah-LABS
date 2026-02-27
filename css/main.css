@@ -1,0 +1,67 @@
+@charset "UTF-8";
+@import "common.css";
+
+/* 1. 기준점 설정 (가장 중요!) */
+.dropdown-parent {
+  position: relative;
+  cursor: pointer;
+  font-weight: 500;
+  /* 드롭다운이 이 메뉴를 기준으로 움직이게 합니다 */
+}
+
+/* 2. 드롭다운 메뉴 컨테이너 수정 */
+.dropdown-menu {
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  min-width: 50px;
+  border-radius: 8px;
+  padding: 5px 12px;
+  height: auto;
+  margin-top: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 12px 5px;
+  color: #eee !important;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  transition: 0.2s;
+  line-height: 1;
+}
+
+.dropdown-parent:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 10px;
+}
+
+.menu-item,
+.dropdown-parent .menu-item {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+
+.menu-item:hover,
+.dropdown-parent:hover>.menu-item {
+  opacity: 0.7;
+}

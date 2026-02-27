@@ -1,0 +1,271 @@
+@charset "UTF-8";
+@import "common.css";
+
+/* 전체 영역 설정 */
+.page-title-area {
+  width: 100%;
+  padding: 160px 0 80px;
+  /* 여백을 조금 더 줘서 시원하게 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 배경에 아주 은은한 그라데이션을 깔아주면 더 고급집니다 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+.title-border-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 50px 120px;
+  /* 핵심: 반투명 배경과 블러 효과 */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* 테두리를 아주 가늘고 흐리게 */
+  border-radius: 0px;
+  /* 스포츠 사이트는 완전 각진 디자인이 더 강렬합니다 */
+  position: relative;
+}
+
+/* 박스 모서리에만 포인트를 주는 디테일 (선택사항) */
+.title-border-box::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 30px;
+  height: 30px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+}
+
+.title-text {
+  font-size: 80px;
+  /* 더 압도적으로 키우세요 */
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* 글자에 그림자를 주어 가독성 확보 */
+}
+
+/* 레이아웃 설정 */
+.container {
+  width: 100%;
+  /* 기본적으로는 꽉 차되 */
+  max-width: 1400px;
+  /* 최대 1400px까지만 늘어남 */
+  margin: 0 auto;
+  /* 화면 중앙 정렬 */
+  padding: 120px 20px 80px;
+  /* 헤더 여백 유지 */
+}
+
+.position-section {
+  margin-bottom: 60px;
+  max-width: 1600px;
+}
+
+.position-title {
+  font-size: 2em;
+  font-weight: 800;
+  border-left: 5px solid #000;
+  padding-left: 15px;
+  margin-bottom: 30px;
+}
+
+/* 카드 그리드 정렬 */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  /* 자리가 부족하면 다음 줄로 넘김 */
+
+  /* gap: 세로(위아래) 가로(좌우) */
+  width: 100%;
+  max-width: 100%;
+  gap: 30px 20px;
+  /* 4개가 딱 들어가는 최적의 너비 */
+  margin: 0 auto 80px;
+  /* 중앙 정렬 및 섹션 간 간격 */
+  justify-content: flex-start
+    /* 왼쪽부터 차례대로 정렬 */
+}
+
+/* 선수 카드 기본 스타일 */
+.player-card {
+  width: 230px;
+  height: 290px;
+  position: relative;
+  flex-shrink: 0;
+  background-color: #f1f1f1;
+  /* 1. 사라진 배경색 추가 */
+  border-radius: 15px;
+  /* 2. 모서리 둥글게 */
+  overflow: hidden;
+  /* 3. 내부 요소가 밖으로 안 나가게 */
+  border: 1px solid #ddd;
+  /* 4. 테두리 추가 */
+  transition: transform 0.3s ease;
+}
+
+.player-card.captain::after {
+  content: 'C';
+  /* Captain의 C */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background-color: #b79a5c;
+  margin: 5px;
+  border-top-right-radius: 10px;
+  /* 강렬한 빨간색 (원하시는 색상으로 변경 가능) */
+  color: #fff;
+  font-weight: 900;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 사선으로 깎인 삼각형 모양 만들기 */
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+
+  /* 텍스트 위치 미세 조정 */
+  padding-left: 30px;
+  padding-bottom: 30px;
+  z-index: 10;
+}
+
+
+.nation-flag {
+  position: absolute;
+  /* 아래 여백이나 위치는 원하시는 대로 조절하세요 */
+  bottom: 50px;
+  left: 20px;
+
+  /* 1. 가로와 세로를 동일하게 맞춰야 정원이 됩니다 */
+  width: 40px;
+  height: 40px;
+
+  /* 2. 테두리를 둥글게 깎아 원형으로 만듭니다 */
+  border-radius: 50%;
+
+  /* 3. 이미지가 원 밖으로 나가지 않도록 설정 */
+  overflow: hidden;
+
+  z-index: 5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  /* 선택사항: 국기 테두리에 얇은 선을 넣으면 더 깔끔합니다 */
+  border: 2px solid #fff;
+}
+
+.nation-flag img {
+  width: 100%;
+  height: 100%;
+  /* 4. 이미지가 찌그러지지 않고 원 안에 꽉 차게 조절 */
+  object-fit: cover;
+  display: block;
+}
+
+/* 호버 시 꽉 차는 배경색 효과를 위한 가상 요소 */
+.player-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  /* 처음엔 높이 0 */
+  background-color: #000;
+  /* 호버 시 채워질 색상 */
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.card-bg {
+  position: absolute;
+  bottom: 0;
+  /* 아래에서 시작 */
+  left: 0;
+  width: 100%;
+  height: 0;
+  /* 처음엔 0 */
+  background-color: #000;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 1;
+}
+
+.player-card:hover .card-bg {
+  height: 100%;
+  /* 호버 시 꽉 참 */
+}
+
+/* 호버 시 배경 채우기 */
+.player-card:hover::before {
+  height: 100%;
+}
+
+.player-photo {
+  position: absolute;
+  bottom: 80px;
+  /* 이름 영역 위에 고정 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 180px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.player-photo img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: all 0.4s ease;
+}
+
+.player-card:hover .player-photo img {
+  transform: scale(1.1) translateY(-10px);
+}
+
+/* 선수 정보 (텍스트) */
+.player-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  z-index: 3;
+}
+
+.player-info .number {
+  display: block;
+  font-size: 13px;
+  color: #888;
+  font-weight: 500;
+  margin-bottom: 3px;
+  transition: color 0.3s;
+}
+
+.player-info .name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #222;
+  transition: color 0.3s;
+}
+
+/* [핵심] 호버 시 글자색 반전 */
+.player-card:hover .player-info .number {
+  color: #aaa;
+}
+
+.player-card:hover .player-info .name {
+  color: #fff;
+}
